@@ -1,0 +1,20 @@
+db:
+    image: mysql
+    environment:
+        # with mysql
+        MYSQL_DATABASE: development
+        MYSQL_ROOT_PASSWORD: root
+web:
+    image: hitalos/laravel:latest
+    ports:
+        - 80:80
+    volumes:
+        - ./:/var/www
+    links:
+        - db
+    environment:
+        DB_HOST: db
+        DB_DATABASE: development
+        DB_USERNAME: root
+        DB_PASSWORD: root
+        DB_CONNECTION: mysql
